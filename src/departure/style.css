@@ -1,0 +1,16 @@
+span.minutes {
+    font-weight: bold;
+}
+
+h1.station {
+    font-size:larger;
+    text-decoration: underline;
+}
+
+h2.direction {
+    font-size:medium;
+}
+
+ul.content {
+    list-style-type:none;
+}
