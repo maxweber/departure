@@ -30,4 +30,3 @@ In Java you have to do something like this:
 				url.openStream(Charset.forName(\"ISO-8859-1\")));
 In the Clojure case the same code works with a variety of objects and not only with an URL.
 The Apache Commons IO solution is not really shorter than the pure Java one.")
-

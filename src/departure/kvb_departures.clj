@@ -92,7 +92,22 @@
         data (extract-depature-times html)]
     data))
 
+(defn to-nice-map "Transform the plain data into a nice map" [plain-data]
+  (let [station (first (first (first plain-data)))]
+    {:station station
+     :directions (into [] (map #(let [direction (second (first %))
+                                      departures (drop 1 %)]
+                                  {:direction direction
+                                   :departures (into []
+                                                     (map (fn [d] (let [[endoftheline departure-in] d]
+                                                                   {:departure-in departure-in
+                                                                    :endoftheline endoftheline})) departures))}) plain-data))
+     }))
+
+(defn departures [station-code]
+  (to-nice-map (fetch-and-extract-depature-times station-code)))
+
 ; a demo
 
 (defn demo []
-  (fetch-and-extract-depature-times "WEH"))
+  (departures "WEH"))
